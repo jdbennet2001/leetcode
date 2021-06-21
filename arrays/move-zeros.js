@@ -1,17 +1,15 @@
 var assert = require('assert');
 
 var moveZeroes = function(nums=[]) {
-    let numbers = []
-    let zeros = []
 
-    nums.forEach(num => {
-        if (num)
-            numbers.push(num)
-        else
-            zeros.push(num)    
-    })
+    for ( let i = nums.length -1; i >= 0; i--){
+        if ( nums[i] == 0 ){
+            nums.splice(i, 1)
+            nums.push(0)
+        }
+    }
 
-    return numbers.concat(zeros)
+    return nums
 };
 
 let res = moveZeroes( [0,1,0,3,12])
