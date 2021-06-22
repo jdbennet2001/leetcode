@@ -1,21 +1,42 @@
 // *     this.val = (val===undefined ? 0 : val)
 // *     this.left = (left===undefined ? null : left)
 // *     this.right = (right===undefined ? null : right)
+
+/*
+ Check if a given tree is a valid binary tree.
+ 
+
+ */
 function is_valid(root){
 
     if ( !root )
         return true;
 
-    let val = (root.val===undefined ? 0 : root.val)
-    let left = (root.left===undefined ? null : root.left)
-    let right = (root.right===undefined ? null : root.right)
+    let val = Math.min;
 
-    if ( left && left.val > val)
-        return false;
+    let is_Valid = true;
 
-    if (right && right.val < val)
-        return false;
+    function traverse(node){
+    
+        if ( node.left )
+            traverse(node.left)
 
-    return is_valid(left) && is_valid(right)
+        if (node.val > val){
+            val = node.val;
+        }
+        else{
+            is_Valid = false;
+            return false;
+        }
+    
+        if ( node.right)
+            traverse(node.right)
+        
+    }
+
+    traverse(root);
+
+    return is_Valid
+
 
 }
