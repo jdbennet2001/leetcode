@@ -17,10 +17,12 @@ function binaryPaths(root){
         
         if ( node.right)
             traverse(path, node.right)
-            
+
     }
 
-    return traverse([], root)
+    traverse([], root)
+
+    return paths;
 
 }
 
